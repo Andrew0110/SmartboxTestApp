@@ -64,7 +64,10 @@ class TTPlaceDetailViewController: UIViewController {
     }
     
     @IBAction func showMapClicked(_ sender: UIButton) {
-        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else { return }
+        vc.place = place
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

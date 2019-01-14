@@ -12,8 +12,6 @@
 		4923E08D21EC9F70007661BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4923E08B21EC9F70007661BD /* Main.storyboard */; };
 		4923E08F21EC9F71007661BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4923E08E21EC9F71007661BD /* Assets.xcassets */; };
 		4923E09221EC9F71007661BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4923E09021EC9F71007661BD /* LaunchScreen.storyboard */; };
-		4923E09D21EC9F72007661BD /* SmartboxTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923E09C21EC9F72007661BD /* SmartboxTestAppTests.swift */; };
-		4923E0A821EC9F72007661BD /* SmartboxTestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923E0A721EC9F72007661BD /* SmartboxTestAppUITests.swift */; };
 		4923E0C321ECA47E007661BD /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923E0C221ECA47E007661BD /* BaseVC.swift */; };
 		4923E0C521ECA543007661BD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923E0C421ECA543007661BD /* APIManager.swift */; };
 		4923E0C821ECA71F007661BD /* ImageView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923E0C621ECA71F007661BD /* ImageView+Loading.swift */; };
@@ -53,11 +51,7 @@
 		4923E09121EC9F71007661BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4923E09321EC9F72007661BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4923E09821EC9F72007661BD /* SmartboxTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartboxTestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4923E09C21EC9F72007661BD /* SmartboxTestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartboxTestAppTests.swift; sourceTree = "<group>"; };
-		4923E09E21EC9F72007661BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4923E0A321EC9F72007661BD /* SmartboxTestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartboxTestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4923E0A721EC9F72007661BD /* SmartboxTestAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartboxTestAppUITests.swift; sourceTree = "<group>"; };
-		4923E0A921EC9F72007661BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4923E0C221ECA47E007661BD /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		4923E0C421ECA543007661BD /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		4923E0C621ECA71F007661BD /* ImageView+Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageView+Loading.swift"; sourceTree = "<group>"; };
@@ -100,8 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				4923E08621EC9F70007661BD /* SmartboxTestApp */,
-				4923E09B21EC9F72007661BD /* SmartboxTestAppTests */,
-				4923E0A621EC9F72007661BD /* SmartboxTestAppUITests */,
 				4923E08521EC9F70007661BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,24 +118,6 @@
 				4923E0B721EC9FC9007661BD /* SupportingFiles */,
 			);
 			path = SmartboxTestApp;
-			sourceTree = "<group>";
-		};
-		4923E09B21EC9F72007661BD /* SmartboxTestAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				4923E09C21EC9F72007661BD /* SmartboxTestAppTests.swift */,
-				4923E09E21EC9F72007661BD /* Info.plist */,
-			);
-			path = SmartboxTestAppTests;
-			sourceTree = "<group>";
-		};
-		4923E0A621EC9F72007661BD /* SmartboxTestAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				4923E0A721EC9F72007661BD /* SmartboxTestAppUITests.swift */,
-				4923E0A921EC9F72007661BD /* Info.plist */,
-			);
-			path = SmartboxTestAppUITests;
 			sourceTree = "<group>";
 		};
 		4923E0B521EC9FA4007661BD /* Library */ = {
@@ -421,7 +395,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4923E09D21EC9F72007661BD /* SmartboxTestAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +402,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4923E0A821EC9F72007661BD /* SmartboxTestAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

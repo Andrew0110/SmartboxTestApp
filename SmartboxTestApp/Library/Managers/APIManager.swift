@@ -1,9 +1,9 @@
 //
 //  APIManager.swift
-//  vocrm
+//  SmartboxTestApp
 //
-//  Created by Andrew on 8/29/18.
-//  Copyright © 2018 nodeads. All rights reserved.
+//  Created by Andrew on 14.01.2019.
+//  Copyright © 2019 Andrew. All rights reserved.
 //
 
 import Foundation
