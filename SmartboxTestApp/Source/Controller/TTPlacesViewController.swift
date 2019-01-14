@@ -57,7 +57,7 @@ class TTPlacesViewController: BaseVC {
     }
 }
 
-//  MARK: - TableView Delegate And DataSource
+//  MARK: - TableView methods
 extension TTPlacesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TTPlacesStore.instance.getPlaces(with: currentType).count
