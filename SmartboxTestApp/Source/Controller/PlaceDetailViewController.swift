@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlaceDetailViewController: BaseVC {
+class PlaceDetailViewController: BaseViewController {
     
     @IBOutlet weak private var placeImageView: UIImageView!
     @IBOutlet weak private var imageHeightConstraint: NSLayoutConstraint!
@@ -41,10 +41,10 @@ class PlaceDetailViewController: BaseVC {
         placeTitleLabel.text = place.title
         shortInfoLabel.text = place.shortDescription
         detailInformationLabel.text = place.description
-
+        
         updateImage()
     }
-
+    
     private func updateImage() {
         guard let place = place else {
             return
@@ -59,12 +59,11 @@ class PlaceDetailViewController: BaseVC {
                     let ratio = image!.size.height / image!.size.width
                     strongself.imageHeightConstraint.constant = strongself.view.bounds.width * ratio
                 }
-//                strongself.view.layoutIfNeeded()
             }
         }
     }
     
-// MARK: - Actions
+    // MARK: - Actions
     @IBAction private func backBtnClicked(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }

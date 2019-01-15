@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: BaseVC {
+class MapViewController: BaseViewController {
     
     @IBOutlet weak private var mapView: MKMapView!
     

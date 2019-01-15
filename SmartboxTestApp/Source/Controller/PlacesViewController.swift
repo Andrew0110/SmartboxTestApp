@@ -8,11 +8,18 @@
 
 import UIKit
 
-class PlacesViewController: BaseVC {
-
+class PlacesViewController: BaseViewController {
+    
     @IBOutlet weak var placesTableView: UITableView!
-
+    
     var currentType: PlaceType = .event
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(loadPlaces), for: .valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
     
     //  MARK: - LifeCycle
     override func viewDidLoad() {
@@ -27,6 +34,7 @@ class PlacesViewController: BaseVC {
         placesTableView.delegate = self
         placesTableView.dataSource = self
         placesTableView.tableFooterView = UIView()
+        placesTableView.addSubview(refreshControl)
     }
     
     //  MARK: - Actions
@@ -39,17 +47,24 @@ class PlacesViewController: BaseVC {
         placesTableView.reloadData()
     }
     
+    private func updatePlaces() {
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
+        }
+        activityIndicator(active: false)
+        placesTableView.reloadData()
+    }
+    
     //  MARK: - Network Actions
-    private func loadPlaces() {
+    @objc private func loadPlaces() {
         activityIndicator(active: true)
         PlaceAPIManager.instance.getTTPlaces { [weak self] (places, error) in
             if let error = error {
-                self?.showAlert(error)
+                self?.showAlert(error: error)
             }
             PlacesStore.instance.setPlaces(places)
             DispatchQueue.main.async {
-                self?.activityIndicator(active: false)
-                self?.placesTableView.reloadData()
+                self?.updatePlaces()
             }
         }
     }

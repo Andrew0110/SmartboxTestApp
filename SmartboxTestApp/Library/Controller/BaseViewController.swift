@@ -1,5 +1,5 @@
 //
-//  BaseVC.swift
+//  BaseViewController.swift
 //  SmartboxTestApp
 //
 //  Created by Andrew on 14.01.2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseVC: UIViewController {
+class BaseViewController: UIViewController {
 
     lazy private var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
@@ -35,7 +35,7 @@ class BaseVC: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func showAlert(_ error: Error) {
+    func showAlert(error: Error) {
         showAlert(title: Constants.AlertTexts.error, message: error.localizedDescription)
     }
     

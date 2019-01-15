@@ -21,11 +21,9 @@ class PlaceAPIManager: NSObject {
             guard let data = data else {
                 completion(nil, error)
                 return
-            }
-            let decoder = JSONDecoder()
-            
+            }            
             do {
-                let decoded = try decoder.decode([Place].self, from: data)
+                let decoded = try JSONDecoder().decode([Place].self, from: data)
                 completion(decoded, nil)
             } catch let err {
                 completion(nil, err)
