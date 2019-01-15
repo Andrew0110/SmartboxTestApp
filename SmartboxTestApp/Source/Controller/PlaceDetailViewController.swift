@@ -16,7 +16,7 @@ class PlaceDetailViewController: BaseViewController {
     @IBOutlet weak private var shortInfoLabel: UILabel!
     @IBOutlet weak private var detailInformationLabel: UILabel!
     
-    var place: Place?
+    private var place: Place?
     
     //  MARK: - LifeCycle
     override func viewDidLoad() {
@@ -24,6 +24,11 @@ class PlaceDetailViewController: BaseViewController {
         
         cleanViews()
         setupPlace()
+    }
+    
+    //  MARK: - Setters
+    func setPlace(_ place: Place) {
+        self.place = place
     }
     
     //  MARK: - UI setup
@@ -69,8 +74,9 @@ class PlaceDetailViewController: BaseViewController {
     }
     
     @IBAction private func showMapClicked(_ sender: UIButton) {
+        guard let place = place else { return }
         let vc = MapViewController.storyboardInstance()
-        vc.place = place
+        vc.setPlace(place)
         navigationController?.pushViewController(vc, animated: true)
     }
     

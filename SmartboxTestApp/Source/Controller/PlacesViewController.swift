@@ -100,7 +100,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         let place = PlacesStore.instance.getPlaces(with: currentType)[indexPath.row]
         
         let vc = PlaceDetailViewController.storyboardInstance()
-        vc.place = place
+        vc.setPlace(place)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

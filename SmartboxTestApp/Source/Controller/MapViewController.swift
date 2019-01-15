@@ -13,7 +13,7 @@ class MapViewController: BaseViewController {
     
     @IBOutlet weak private var mapView: MKMapView!
     
-    var place: Place?
+    private var place: Place?
     private let regionRadius: CLLocationDistance = 3000
     
     //   MARK: - Life Cycle
@@ -21,6 +21,11 @@ class MapViewController: BaseViewController {
         super.viewDidLoad()
         
         updatePosition()
+    }
+    
+    //  MARK: - Setters
+    func setPlace(_ place: Place) {
+        self.place = place
     }
     
     //   MARK: - Map Actions
