@@ -8,13 +8,13 @@
 
 import UIKit
 
-class TTPlacesViewController: BaseVC {
+class PlacesViewController: BaseVC {
 
     @IBOutlet weak var placesTableView: UITableView!
 
-    var currentType: TTPlaceType = .event
+    var currentType: PlaceType = .event
     
-//  MARK: - LifeCycle
+    //  MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,17 +22,15 @@ class TTPlacesViewController: BaseVC {
         loadPlaces()
     }
     
-//  MARK: - Preparations
+    //  MARK: - Preparations
     private func setupTableView() {
         placesTableView.delegate = self
         placesTableView.dataSource = self
         placesTableView.tableFooterView = UIView()
-        
-        placesTableView.estimatedRowHeight = 100
     }
     
-//  MARK: - Actions
-    @IBAction func segmentedControlChanged(_ segmentControl: UISegmentedControl) {
+    //  MARK: - Actions
+    @IBAction private func segmentedControlChanged(_ segmentControl: UISegmentedControl) {
         if segmentControl.selectedSegmentIndex == 0 {
             currentType = .event
         } else {
@@ -41,16 +39,16 @@ class TTPlacesViewController: BaseVC {
         placesTableView.reloadData()
     }
     
-//  MARK: - Network Actions
+    //  MARK: - Network Actions
     private func loadPlaces() {
-        showActivityIndicator()
-        TTPlaceAPIManager.instance.getTTPlaces { [weak self] (places, error) in
-            if error != nil {
-                self?.showAlert(error!)
+        activityIndicator(active: true)
+        PlaceAPIManager.instance.getTTPlaces { [weak self] (places, error) in
+            if let error = error {
+                self?.showAlert(error)
             }
-            TTPlacesStore.instance.setPlaces(places)
+            PlacesStore.instance.setPlaces(places)
             DispatchQueue.main.async {
-                self?.hideActivityIndicator()
+                self?.activityIndicator(active: false)
                 self?.placesTableView.reloadData()
             }
         }
@@ -58,13 +56,17 @@ class TTPlacesViewController: BaseVC {
 }
 
 //  MARK: - TableView methods
-extension TTPlacesViewController: UITableViewDelegate, UITableViewDataSource {
+extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TTPlacesStore.instance.getPlaces(with: currentType).count
+        return PlacesStore.instance.getPlaces(with: currentType).count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TTPlaceCell", for: indexPath) as? TTPlaceCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as? PlaceCell else {
             return UITableViewCell()
         }
         
@@ -72,22 +74,17 @@ extension TTPlacesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? TTPlaceCell else { return }
+        guard let cell = cell as? PlaceCell else { return }
         
-        let place = TTPlacesStore.instance.getPlaces(with: currentType)[indexPath.row]
+        let place = PlacesStore.instance.getPlaces(with: currentType)[indexPath.row]
         cell.configure(with: place);
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let place = TTPlacesStore.instance.getPlaces(with: currentType)[indexPath.row]
+        let place = PlacesStore.instance.getPlaces(with: currentType)[indexPath.row]
         
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "TTPlaceDetailViewController") as? TTPlaceDetailViewController else { return }
+        let vc = PlaceDetailViewController.storyboardInstance()
         vc.place = place
         navigationController?.pushViewController(vc, animated: true)
     }

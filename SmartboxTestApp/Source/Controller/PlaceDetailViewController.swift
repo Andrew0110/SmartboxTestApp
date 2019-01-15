@@ -8,27 +8,33 @@
 
 import UIKit
 
-class TTPlaceDetailViewController: UIViewController {
+class PlaceDetailViewController: BaseVC {
     
-    @IBOutlet weak var placeImageView: UIImageView!
-    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var placeTitleLabel: UILabel!
-    @IBOutlet weak var shortInfoLabel: UILabel!
-    @IBOutlet weak var detailInformationLabel: UILabel!
+    @IBOutlet weak private var placeImageView: UIImageView!
+    @IBOutlet weak private var imageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var placeTitleLabel: UILabel!
+    @IBOutlet weak private var shortInfoLabel: UILabel!
+    @IBOutlet weak private var detailInformationLabel: UILabel!
     
-    var place: TTPlace?
+    var place: Place?
     
+    //  MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupViews()
+        cleanViews()
+        setupPlace()
     }
     
-    private func setupViews() {
+    //  MARK: - UI setup
+    private func cleanViews() {
         placeTitleLabel.text = ""
         shortInfoLabel.text = ""
         detailInformationLabel.text = ""
         imageHeightConstraint.constant = 0
+    }
+    
+    private func setupPlace() {
         guard let place = place else {
             return
         }
@@ -59,13 +65,12 @@ class TTPlaceDetailViewController: UIViewController {
     }
     
 // MARK: - Actions
-    @IBAction func backBtnClicked(_ sender: UIButton) {
+    @IBAction private func backBtnClicked(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func showMapClicked(_ sender: UIButton) {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else { return }
+    @IBAction private func showMapClicked(_ sender: UIButton) {
+        let vc = MapViewController.storyboardInstance()
         vc.place = place
         navigationController?.pushViewController(vc, animated: true)
     }

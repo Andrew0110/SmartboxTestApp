@@ -1,5 +1,5 @@
 //
-//  TTPlacesStore.swift
+//  PlacesStore.swift
 //  SmartboxTestApp
 //
 //  Created by Andrew on 14.01.2019.
@@ -8,20 +8,20 @@
 
 import UIKit
 
-class TTPlacesStore: NSObject {
-    static let instance = TTPlacesStore()
+class PlacesStore: NSObject {
+    static let instance = PlacesStore()
     
-    private var events = [TTPlace]()
-    private var shops = [TTPlace]()
+    private var events = [Place]()
+    private var shops = [Place]()
 
     private override init() {
         super.init()
     }
     
-//  MARK: - Public Methods
-    func setPlaces(_ places:[TTPlace]?) {
-        events = [TTPlace]()
-        shops = [TTPlace]()
+    //  MARK: - Public Methods
+    func setPlaces(_ places:[Place]?) {
+        events = [Place]()
+        shops = [Place]()
         guard let places = places else { return }
         places.forEach{
             switch $0.type {
@@ -33,7 +33,7 @@ class TTPlacesStore: NSObject {
         }
     }
     
-    func getPlaces(with type:TTPlaceType) -> [TTPlace] {
+    func getPlaces(with type:PlaceType) -> [Place] {
         switch type {
         case .event:
             return events

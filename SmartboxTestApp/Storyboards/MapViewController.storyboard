@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3yf-7W-Rqg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="cJT-zf-dV6">
+            <objects>
+                <viewController id="3yf-7W-Rqg" customClass="MapViewController" customModule="SmartboxTestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WLu-Qe-uLH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIg-K1-SyB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vbh-St-bFs">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8Z-8Q-7Pr">
+                                                <rect key="frame" x="170" y="11.5" width="35" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZE3-OW-EH7">
+                                                <rect key="frame" x="9" y="11.5" width="36" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="36" id="PNA-Oi-iuM"/>
+                                                    <constraint firstAttribute="height" constant="21" id="gLN-Vv-QfN"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="24" maxY="0.0"/>
+                                                <state key="normal" image="Back"/>
+                                                <connections>
+                                                    <action selector="backButtonClicked:" destination="3yf-7W-Rqg" eventType="touchUpInside" id="71X-LD-w3l"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="p8Z-8Q-7Pr" firstAttribute="centerY" secondItem="Vbh-St-bFs" secondAttribute="centerY" id="J1n-mF-bOy"/>
+                                            <constraint firstItem="ZE3-OW-EH7" firstAttribute="leading" secondItem="Vbh-St-bFs" secondAttribute="leading" constant="9" id="JUO-Ps-j12"/>
+                                            <constraint firstItem="p8Z-8Q-7Pr" firstAttribute="centerX" secondItem="Vbh-St-bFs" secondAttribute="centerX" id="Tme-Qa-i6W"/>
+                                            <constraint firstItem="ZE3-OW-EH7" firstAttribute="centerY" secondItem="Vbh-St-bFs" secondAttribute="centerY" id="gLi-7j-1y4"/>
+                                            <constraint firstAttribute="height" constant="44" id="zr3-ff-n2A"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Vbh-St-bFs" secondAttribute="bottom" id="1on-08-uo7"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vbh-St-bFs" secondAttribute="trailing" id="7P5-uY-dsj"/>
+                                    <constraint firstItem="Vbh-St-bFs" firstAttribute="leading" secondItem="jIg-K1-SyB" secondAttribute="leading" id="80t-fA-Q0o"/>
+                                </constraints>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lnH-2d-sai">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="lnH-2d-sai" secondAttribute="bottom" id="BD7-ow-tuB"/>
+                            <constraint firstItem="jIg-K1-SyB" firstAttribute="leading" secondItem="40U-Gp-8ez" secondAttribute="leading" id="CIv-jA-MSq"/>
+                            <constraint firstItem="jIg-K1-SyB" firstAttribute="bottom" secondItem="40U-Gp-8ez" secondAttribute="top" constant="44" id="Mhk-CB-y3A"/>
+                            <constraint firstItem="40U-Gp-8ez" firstAttribute="trailing" secondItem="lnH-2d-sai" secondAttribute="trailing" id="WwC-k9-BFn"/>
+                            <constraint firstItem="lnH-2d-sai" firstAttribute="top" secondItem="jIg-K1-SyB" secondAttribute="bottom" id="e6V-d0-4ss"/>
+                            <constraint firstItem="jIg-K1-SyB" firstAttribute="top" secondItem="WLu-Qe-uLH" secondAttribute="top" id="gOO-Zh-b44"/>
+                            <constraint firstItem="lnH-2d-sai" firstAttribute="leading" secondItem="40U-Gp-8ez" secondAttribute="leading" id="plh-id-Md8"/>
+                            <constraint firstItem="jIg-K1-SyB" firstAttribute="trailing" secondItem="40U-Gp-8ez" secondAttribute="trailing" id="sVb-J3-DJV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="40U-Gp-8ez"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="lnH-2d-sai" id="WCz-nc-hem"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L03-ZL-beC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1881" y="27"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Back" width="12" height="21"/>
+    </resources>
+</document>

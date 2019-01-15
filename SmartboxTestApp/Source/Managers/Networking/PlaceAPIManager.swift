@@ -1,5 +1,5 @@
 //
-//  TTPlaceAPIManager.swift
+//  PlaceAPIManager.swift
 //  SmartboxTestApp
 //
 //  Created by Andrew on 14.01.2019.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class TTPlaceAPIManager: NSObject {
-    static let instance = TTPlaceAPIManager()
+class PlaceAPIManager: NSObject {
+    static let instance = PlaceAPIManager()
     
     private override init() {
         super.init()
     }
     
-    func getTTPlaces(completion: @escaping ([TTPlace]?, Error?) -> ()) {
+    func getTTPlaces(completion: @escaping ([Place]?, Error?) -> ()) {
         let url = Constants.BASE_URL
         APIManager.GET(urlString: url) { (data, error) in
             guard let data = data else {
@@ -25,10 +25,10 @@ class TTPlaceAPIManager: NSObject {
             let decoder = JSONDecoder()
             
             do {
-                let decoded = try decoder.decode([TTPlace].self, from: data)
+                let decoded = try decoder.decode([Place].self, from: data)
                 completion(decoded, nil)
-            } catch {
-                print("Failed to decode JSON")
+            } catch let err {
+                completion(nil, err)
             }
         }
     }

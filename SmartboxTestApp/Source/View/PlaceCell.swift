@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TTPlaceCell: UITableViewCell {
+class PlaceCell: UITableViewCell {
 
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeTitleLabel: UILabel!
@@ -26,7 +26,7 @@ class TTPlaceCell: UITableViewCell {
         placeImageView.layer.cornerRadius = placeImageView.frame.width / 2
     }
     
-    func configure(with place:TTPlace) {
+    func configure(with place:Place) {
         placeTitleLabel.text = place.title
         shortDescriptionLabel.text = place.shortDescription
         

@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIImageView {
-    static let imageCache = NSCache<NSString, UIImage>()
+    private static let imageCache = NSCache<NSString, UIImage>()
     
     func setImage(imageURL: String, completion: @escaping (UIImage?) -> ()) {
         guard let url = URL(string: imageURL) else { return }
@@ -23,8 +23,7 @@ extension UIImageView {
                     UIImageView.imageCache.setObject(imageToCache, forKey: url.absoluteString as NSString)
                     completion(imageToCache)
                 }
-                }.resume()
+            }.resume()
         }
-        
     }
 }

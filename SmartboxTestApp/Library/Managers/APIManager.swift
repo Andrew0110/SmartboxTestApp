@@ -8,14 +8,27 @@
 
 import Foundation
 
+enum APIError: String, LocalizedError {
+    case incorrectUrlError = "Incorrect URL"
+    
+    public var errorDescription: String? {
+        return self.rawValue
+    }
+}
+
 class APIManager {
     
-    static func GET(urlString: String, headers: [String:String]? = [:], parameters: [String:Any]? = [:], completion: @escaping (Data?, Error?) -> ()) {
-        let url = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        var request = URLRequest(url: URL(string: url!)!)
+    static func GET(urlString: String, headers: [String: String] = [:], completion: @escaping (Data?, Error?) -> ()) {
+        guard
+            let urlEncoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+            let url = URL(string: urlEncoded) else {
+                completion(nil, APIError.incorrectUrlError)
+                return
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         var allHeaders = basicHeaders()
-        allHeaders.merge(other: headers!)
+        allHeaders.merge(other: headers)
         for (key, value) in allHeaders {
             request.setValue(value, forHTTPHeaderField: key)
         }
@@ -29,7 +42,7 @@ class APIManager {
         }.resume()
     }
     
-    fileprivate static func basicHeaders() -> [String:String] {
+    private static func basicHeaders() -> [String:String] {
         return ["Content-Type" : "application/json"]
     }
 }

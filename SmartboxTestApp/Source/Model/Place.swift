@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum TTPlaceType: String, Codable {
+enum PlaceType: String, Decodable {
     case event
     case shop
 }
 
-struct TTPlace:Codable {
+struct Place: Decodable {
     let id: Int
-    let type: TTPlaceType
+    let type: PlaceType
     let title: String
     let shortDescription: String
     let description: String
